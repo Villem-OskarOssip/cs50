@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Money
+{% endblock %}
+
+{% block main %}
+<div class="row">
+  <div class="column">
+      <h2>Add cash to account</h2>
+    <form action="/money" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="addMoney" placeholder="Sum" type="text"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+  </div>
+  <div class="column">
+          <h2>Take cash from account</h2>
+    <form action="/money" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="takeMoney" placeholder="Sum" type="text"/>
+        </div>
+        <button class="btn btn-primary" type="submit">Take</button>
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

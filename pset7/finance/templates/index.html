@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+
+    <h1>Welcome, {{ username }}</h1>
+
+    {% if message1 %}
+      <div class="alert success">
+        <span class="closebtn">&times;</span>
+        <strong>{{ message1 }}</strong>{{ message2 }}
+      </div>
+    {% else %}
+
+    {% endif %}
+    <table class="table table-striped" style="width:100%; border-bottom: 1px solid #ddd;">
+      <tr>
+        <th>Symbol</th>
+        <th>Shares</th>
+        <th>Buy Price</th>
+        <th>Market Price</th>
+        <th>% Gain/Loss</th>
+        <th>TOTAL</th>
+      </tr>
+    {% for stock in stocks %}
+      <tr>
+        <td>{{ stock.symbol }}</td>
+        <td>{{ stock.shares }}</td>
+        <td>{{ stock.price }}</td>
+        <td>{{ stock.marketprice }}</td>
+        <td>{{ stock.percentage }}</td>
+        <td>{{ stock.total }}</td>
+      </tr>
+    {% endfor %}
+      <tr>
+        <td>CASH</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>{{ cash }}</td>
+      </tr>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><b>{{ total }}</b></td>
+      </tr>
+    </table>
+                <script>
+            var close = document.getElementsByClassName("closebtn");
+            var i;
+
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function(){
+                    var div = this.parentElement;
+                    div.style.opacity = "0";
+                    setTimeout(function(){ div.style.display = "none"; }, 600);
+                }
+            }
+        </script>
+{% endblock %}
